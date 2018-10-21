@@ -85,7 +85,7 @@ class Translatable extends Field
      * Set a target field that will have the same input as the current field
      * the value is set through the keyup option
      */
-    public function fieldHookup($targetField)
+    public function fieldHookup($targetField = null)
     {
         return $this->withMeta(['hookup' => $targetField]);
     }

@@ -491,6 +491,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Trix___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Trix__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_laravel_nova__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_laravel_nova___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_laravel_nova__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 //
 //
 //
@@ -592,8 +594,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 currentLocale = _ref2.currentLocale;
 
             if (_this.field.name == hookupField) {
-                if (typeof _this.field.value[currentLocale] != "undefined") {
-                    _this.field.value[currentLocale] = initiatorElement.field.value[currentLocale];
+
+                if (_typeof(_this.field.value) == 'object') {
+                    if (_this.field.value == null) {} else {
+                        _this.field.value[currentLocale] = initiatorElement.field.value[currentLocale];
+                    }
                 } else {
                     _this.field.value = initiatorElement.field.value;
                 }
@@ -666,6 +671,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleInputKeyUp: function handleInputKeyUp() {
             var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
             var currentLocale = arguments[1];
+
 
             if (name !== null) {
                 Nova.$emit('field-hookup-change', {
@@ -11570,11 +11576,7 @@ var render = function() {
               staticClass:
                 "mt-4 w-full form-control form-input form-input-bordered py-3 min-h-textarea",
               class: _vm.errorClasses,
-              attrs: {
-                id: _vm.field.name,
-                readonly: _vm.field.readonly == true,
-                placeholder: _vm.field.name
-              },
+              attrs: { id: _vm.field.name, placeholder: _vm.field.name },
               domProps: { value: _vm.value[_vm.currentLocale] },
               on: {
                 keydown: function($event) {

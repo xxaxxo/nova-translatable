@@ -22,7 +22,7 @@
                 ref="field" 
                 :id="field.name"
                 class="mt-4 w-full form-control form-input form-input-bordered py-3 min-h-textarea"
-                :readonly="(field.readonly == true)"
+                
                 :class="errorClasses"
                 :placeholder="field.name"
                 v-model="value[currentLocale]"
@@ -92,9 +92,17 @@ export default {
         Nova.$on('field-hookup-change', ({hookupField, initiatorElement, currentLocale}) => {
             if(this.field.name == hookupField)
             {
-                if(typeof this.field.value[currentLocale] != "undefined")
+
+                if(typeof this.field.value == 'object')
                 {
-                    this.field.value[currentLocale] = initiatorElement.field.value[currentLocale];
+                    if(this.field.value == null)
+                    {
+                    
+                    }
+                    else
+                    {
+                        this.field.value[currentLocale] = initiatorElement.field.value[currentLocale];
+                    }
                 }
                 else
                 {
@@ -109,7 +117,7 @@ export default {
          * Set the initial, internal value for the field.
          */
         setInitialValue() {
-          this.value = this.field.value || {}
+          this.value = this.field.value || {};
         },
 
         /**
@@ -161,6 +169,7 @@ export default {
             }
         },
         handleInputKeyUp(name = null, currentLocale) {
+           
            if(name !== null)
            {
                Nova.$emit('field-hookup-change', {
