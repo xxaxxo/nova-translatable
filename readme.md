@@ -1,5 +1,5 @@
 # Nova Translatable Field
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/xxaxxo/nova-translatable.svg?style=flat-square)](https://packagist.org/packages/xxaxxo/nova-translatable)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/xxc/nova-translatable.svg?style=flat-square)](https://packagist.org/packages/xxc/nova-translatable)
 
 Adds the ability to show and edit translated fields created with [spatie/laravel-translatable](https://github.com/spatie/laravel-translatable) package.
 
